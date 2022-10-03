@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Movie App</title>
+
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+<body>
+    <nav id="navbar">
+        <ul class="navbar_list">
+          <img src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg" id="logo" alt="">
+          <li> <a href="#">TV</a></li>
+          <li> <a href="#">Movies</a> </li>
+          <li> <a href="#">Sports</a></li>
+          <li><a href="#">Disney+</a></li>
+          <li><a href="#">Kids</a></li>
+          <li><a href="popular.html">Popular Movies</a></li>
+          <li><a id="loginName" href="login.html">Login</a></li>
+          <li><a href="signup.html">Signup</a></li>
+          
+        </ul>
+
+        <div>
+            <input oninput="debounce(main,1000)" type="text" id="query" placeholder="search"/>
+
+            <div id="movies"></div>
+
+        </div>
+    </nav>
+    <div id="slideshow"></div>
+    <div id="show-details"></div>
+    <div id="popular_div"></div>
+</body>
+</html>
+
+<script src="index.js"></script>

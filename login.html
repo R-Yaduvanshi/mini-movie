@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                overflow: hidden;
+                background-color: rgb(6, 9, 29);
+            }
+            #login-form-div{
+                background-color: whitesmoke;
+                margin-top: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                width: 400px;
+                /* background: aquamarine; */
+                border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
+            h1{
+                text-align: center;
+                padding: 0 0 50px 0;
+            }
+            #login-form-div form{
+                padding: 0 40px;
+                box-sizing: border-box;
+            }
+            form #input_field{
+                position: relative;
+                /* border-bottom: 2px solid black; */
+                margin: 30px 0;
+            }
+            #input_field input{
+                width: 70%;
+                padding: 0 16px;
+                height: 40px;
+                font-size: 16px;
+                margin-left: 27px;
+                border-radius: 5px;
+                border: 1px solid gray;
+
+            }
+            #button{
+                width: 40%;
+                height: 30px;
+                border-radius: 5px;
+                background-color: #008080;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                text-align: center;
+                
+            }
+            #button:hover{
+                color: blue;
+                background-color: bisque;
+            }
+            #submit_button{
+               display: flex;
+               justify-content: center;
+               margin-bottom: 25px;
+                
+            }
+
+            /* Navbar */
+
+#navbar{
+    background-color: rgb(6, 9, 29);
+    color:white;
+    padding:30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    border-bottom: 1px solid white;
+}
+.navbar_list{
+    display: flex;
+}
+.navbar_list li{
+    list-style: none;
+    margin: 10px;
+}
+
+#logo{
+    height: 28px;
+    margin-top: 2px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+h3,p{
+    text-align: center;
+    /* margin-left: 20px; */
+}
+
+            
+
+        </style>
+    </head>
+
+    <body>
+        <nav id="navbar">
+            <ul class="navbar_list">
+              <img src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg" id="logo" alt="">
+              <!-- <li> <a href="#">TV</a></li> -->
+              <!-- <li> <a href="#">Movies</a> </li> -->
+              <!-- <li> <a href="#">Sports</a></li> -->
+              <!-- <li><a href="#">Disney+</a></li> -->
+              <li><a href="index.html">Home</a></li>
+              <!-- <li><a href="popular.html">Popular Movies</a></li> -->
+              <li><a href="login.html">Login</a></li>
+              <li><a href="signup.html">Signup</a></li>
+              
+            </ul>
+    
+            <!-- <div>
+                <input oninput="debounce(main,1000)" type="text" id="query" placeholder="search"/>
+    
+                <div id="movies"></div>
+    
+            </div> -->
+        </nav>
+
+        <!-- <div id="navbar">
+            <div id="inner_div">
+                <div><a href="index.html">Home</a></div>
+                <div><a href="signup.html">Signup</a></div>
+                <div><a href="login.html">Login</a></div>
+            </div>
+        </div> -->
+        <div id="login-form-div">
+            <h1>Login</h1>
+            <form onsubmit="loginfun()">
+                <!--Write form input elements here-->
+                <div id="input_field">
+                    <input id="email" type="text" placeholder="Enter Your Email"/>
+                </div>
+                <div id="input_field">
+                    <input id="password" type="password" placeholder="Enter Password"/>
+                </div>
+
+                <div id="submit_button">
+                    <input id="button" type="submit" />
+                </div>
+
+            </form>
+
+        </div>
+    </body>
+
+</html>
+
+<script>
+    let signup_data = JSON.parse(localStorage.getItem("Add_User_Data"))
+    console.log(signup_data)
+
+    let loginarr = [];
+
+    document.querySelector("#button").addEventListener("click", funsub)
+
+function funsub() {
+    event.preventDefault();
+    var flag = false
+
+    var name1 = document.querySelector("#email").value
+    var pass = document.querySelector("#password").value
+
+    console.log(name1,pass)
+
+    signup_data.map(function(elem) {
+
+
+        if (name1 == elem.Email && pass == elem.Password) {
+            flag = true
+
+            loginarr.push(elem.name)
+        }
+    })
+
+    if (flag == true) {
+        alert("Succesfull Login")
+
+        localStorage.setItem("logindata", JSON.stringify(loginarr))
+        window.location.href = "index.html"
+        
+        // console.log("check")
+    } else {
+        alert("invalid Credentials")
+        return
+    }
+
+}
+
+
+    
+
+
+</script>
